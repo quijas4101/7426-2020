@@ -45,7 +45,7 @@ public class Shooter {
 			ShooterObj.set(0);
 		   }
 	  	if(Math.abs(getRPM()-m_desiredRPM)<50){
-			///Time to SHOOT
+			//Time to SHOOT  Light or something on dashboard
 		  }
      }
   
