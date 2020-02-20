@@ -1,0 +1,11 @@
+package frc.robot.subsystems;
+
+import edu.wpi.first.wpilibj.*;
+
+public class FileName {
+  private static OBJECT OBJECT_NAME = new OBJECT(PARAMETERs);
+
+  public static void VOID_NAME(PARAMETERs) {
+    
+  }
+}
