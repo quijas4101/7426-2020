@@ -30,8 +30,7 @@ public class Shooter {
     kMaxOutput = 1; 
     kMinOutput = 0;
     maxRPM = 5800;
-    double setpoint = 0;
-
+    double setpoint = 0; // maybe try shoot_speed*maxRPM
   }
   
    
