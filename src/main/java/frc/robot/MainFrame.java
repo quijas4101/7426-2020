@@ -117,7 +117,11 @@ public class MainFrame {
   public static void TestControl(XboxController Controller, Joystick Joystick) {
     Drive.DriveHandler(-Controller.getY(Hand.kLeft), Controller.getX(Hand.kRight));
     Accumulator.SetPower(Joystick.getRawButton(11), Joystick.getRawButton(12));
-    Shooter.SetPower(Joystick.getTrigger(), Joystick.getThrottle());
+    if(Joystick.getTrigger()){
+      shooter.set(Constants.getConstants().debugShooterSet);
+    }
+    
+    
     Pneumatics.MovePiston(Joystick.getRawButton(3));
     if (Joystick.getRawButton(2)) {
       ColorWheel.SetPower(1);
