@@ -16,7 +16,7 @@ public class Shooter {
   private static SpeedControllerGroup ShooterObj = new SpeedControllerGroup(shooter_motors[0], shooter_motors[1]);
   private  CANPIDController controller;
 //private CANPIDController pidController2;
-  public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM;
+  public double kMaxOutput, kMinOutput, maxRPM;
   public double shoot_speed = 1.0;
 
   public static void Initialize() {
@@ -27,11 +27,6 @@ public class Shooter {
     
 
     
-    kP =  0.0011;
-    kI = 0;
-    kD = 4 
-    kIz = 0; 
-    kFF = 0.000017; 
     kMaxOutput = 1; 
     kMinOutput = 0;
     maxRPM = 5800;
@@ -70,10 +65,10 @@ public class Shooter {
 
   public void updateConstants() {
     controller.setOutputRange(kMaxOutput, kMinOutput);
-    controller.setP(kP);
-    controller.setI(kI);
-    controller.setD(kD);
-    controller.setFF(kF);
+    controller.setP(constants.shooterP);
+    controller.setI(constants.shooterI);
+    controller.setD(constants.shooterD);
+    controller.setFF(constants.shooterF);
   }
   
     /*if (Enabled) {
