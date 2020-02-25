@@ -104,11 +104,14 @@ public class MainFrame {
   }
 
   public static void Control(XboxController Controller, Joystick Joystick) {
-    Drive.DriveHandler(-Controller.getY(Hand.kLeft), Controller.getX(Hand.kRight));
-    Accumulator.SetPower(Joystick.getRawButton(11), Joystick.getRawButton(2));
-    Shooter.SetPower(Joystick.getTrigger(), Joystick.getThrottle());
+     Drive.DriveHandler(-Controller.getY(Hand.kLeft), Controller.getX(Hand.kRight));
+    Accumulator.SetPower(Joystick.getRawButton(11), Joystick.getRawButton(12));
+    if(Joystick.getTrigger()){
+      shooter.set(Constants.getConstants().debugShooterSet);
+    }
+    
     Pneumatics.MovePiston(Joystick.getRawButton(3));
-    if (Joystick.getRawButton(12)) {
+    if (Joystick.getRawButton(2)) {
       ColorWheel.SetPower(1);
     } else {
       ColorWheel.SetPower(0);
@@ -120,7 +123,6 @@ public class MainFrame {
     if(Joystick.getTrigger()){
       shooter.set(Constants.getConstants().debugShooterSet);
     }
-    
     
     Pneumatics.MovePiston(Joystick.getRawButton(3));
     if (Joystick.getRawButton(2)) {
