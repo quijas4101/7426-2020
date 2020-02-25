@@ -108,7 +108,9 @@ public class MainFrame {
     Accumulator.SetPower(Joystick.getRawButton(11), Joystick.getRawButton(12));
     if(Joystick.getTrigger()){
       shooter.set(Constants.getConstants().debugShooterSet);
-    }
+    }else{
+shooter.stop()
+}
     
     Pneumatics.MovePiston(Joystick.getRawButton(3));
     if (Joystick.getRawButton(2)) {
