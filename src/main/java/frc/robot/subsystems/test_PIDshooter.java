@@ -9,15 +9,15 @@ import com.revrobotics.CANEncoder.*;
 public class Shooter {
   public static final int[] SHOOTER_CAN = {11, 10};
  CANSparkMax[] shooter_motors = new CANSparkMax[] {
-    new CANSparkMax(PortMap.SHOOTER_CAN[0], MotorType.kBrushless),
-    new CANSparkMax(PortMap.SHOOTER_CAN[1], MotorType.kBrushless),
+    new CANSparkMax(SHOOTER_CAN[0], MotorType.kBrushless),
+    new CANSparkMax(SHOOTER_CAN[1], MotorType.kBrushless),
   };
   private static CANEncoder encoder;
  //pivate static CANEncoder encoder2;
   private static SpeedControllerGroup ShooterObj = new SpeedControllerGroup(shooter_motors[0], shooter_motors[1]);
   private  CANPIDController controller;
 //private CANPIDController pidController2;
-  public double kMaxOutput, kMinOutput, maxRPM;
+  public double kMaxOutput, kMinOutput;
   public double shoot_speed = 1.0;
 
   public static void Initialize() {
@@ -25,8 +25,6 @@ public class Shooter {
    shooter_motors[1].setInverted(false);
     shooter_motors[0].restoreFactoryDefaults();
     shooter_motors[1].restoreFactoryDefaults();
-    
-
     
     kMaxOutput = 1; 
     kMinOutput = 0;
