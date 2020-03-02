@@ -18,6 +18,7 @@ public class Constants {
     public double shooterD = 4;
     public double shooterF = 0.00017;
     public double debugShooterSet = 5700;
+    public double autoSet = 4000;
 
   
 }
