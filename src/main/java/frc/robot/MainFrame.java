@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.Timer;
 
 public class MainFrame {
   // Shuffleboard Data Initialization and Communication
@@ -88,19 +89,38 @@ public class MainFrame {
     Drive.InitializeFactory();
     Shooter.Initialize();
   }
+ 
 
   public static void Terminate() {}
 
+   public double autoStart;
   public static void InitializeAutonomous() {
     Drive.InitializeAutonomous();
     Accumulator.InitializeAutonomous();
     ColorWheel.InitializeAutonomous();
+    Shooter.InitializeAutonomous();
+    autoStart= Timer.getFPGATimestamp();
+  }
+ 
+  public void autonomousPeriodic() {
+    double currentSec = Timer.getFPGATimestamp() - autonomousStart;
+    shooter.set(Constants.getConstants().autoSet);
+    if (currentSec >= 3 && currentSec < 7){
+        Accumulator.SetPower(True, True)
+    }else {
+      shooter.stop();
+      Accumulator.SetPower(False, False)
+    }
+    if (currentSec >= 8 && currentSec < 10 ){
+       Drive.DriveHandler(0.5,0);
+    }
   }
 
   public static void TerminateAutonomous() {
     Drive.TerminateAutonomous();
     Accumulator.TerminateAutonomous();
     ColorWheel.TerminateAutonomous();
+    Shooter.TerminateAutonomous();
   }
 
   public static void Control(XboxController Controller, Joystick Joystick) {
